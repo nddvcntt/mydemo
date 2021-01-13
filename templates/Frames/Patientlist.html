@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}
+    patient list
+{% endblock %}
+{% block bd1 %}
+    <div class="row">
+        <div class="col-sm-2 mt-2">
+            <div class="list-group">
+                <a href="#" class="list-group-item"></a>
+                Cách thức thu thập bộ dữ liệu
+
+                <a href="#" class="list-group-item">Xử lý dữ liệu </a>
+
+                <a href="#" class="list-group-item">Tải về CSDL dữ liệu </a>
+
+                <a href="#" class="list-group-item">Thống kê dữ liệu </a>
+
+                <a href="#" class="list-group-item">Các nhiệm vụ liên quan đến bộ dữ liệu </a>
+
+            </div>
+
+        </div>
+        <div class="col-sm-10 mt-2">
+            <div style="text-align: center">
+                <h1 class="text-uppercase mt-4">    {% block nametable %}
+                    Patient list
+                {% endblock %}
+                </h1>
+            </div>
+            <table class="table table-striped ">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Sex</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Weak hand</th>
+                    <th scope="col">Disease status</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for x in Patient %}
+                    <tr>
+                        <th scope="row"> <a href="/Frames/{{ x.id }}">  {{ x.id }}</a>  </th>
+                        <td>{{ x.name }}</td>
+                        <td>{{ x.age }}</td>
+                        <td>{{ x.sex }}</td>
+                        <td>{{ x.address }}</td>
+                        <td>{{ x.weakhand }}</td>
+                        <td>{{ x.sod }}</td>
+
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+            <br/>
+            {% if page_obj.has_next %}
+                <a href="/"> </a>
+            {% endif %}
+
+        </div>
+
+    </div>
+{% endblock %}

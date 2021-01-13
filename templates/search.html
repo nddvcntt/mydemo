@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block title %}
+    search
+{% endblock %}
+{% block bd1 %}
+    <div class="row">
+        <div class="col-sm-3 mt-3">
+            <div class="card">
+                <div class="card-header bg-success text-white text-center ">
+                    Select data to download
+                </div>
+                <div class="card-body">
+                    <select class="form-select" name="patient">
+                        <option selected>Open this select patient</option>
+                        <option value="1">Patient 1</option>
+                        <option value="2">Patient 2</option>
+                        <option value="3">Patient 3</option>
+                        <option value="4">Patient 4</option>
+                        <option value="5">Patient 5</option>
+                        <option value="6">Patient 6</option>
+                        <option value="7">Patient 7</option>
+                        <option value="8">Patient 8</option>
+                        <option value="9">Patient 9</option>
+                        <option value="10">Patient 10</option>
+                    </select>
+                    <br>
+                    <select class="form-select" name="patient">
+                        <option selected>Open this select patient</option>
+                        {% for foo in Patient %}
+                            <option value="{{ foo.id }}">Patient 1</option>
+                        {% endfor %}
+
+
+                    </select>
+                    <br>
+                    <select class="form-select" name="exercise">
+                        <option selected>Open this select exercise</option>
+                        <option value="1">Exercise 1</option>
+                        <option value="2">Exercise 2</option>
+                        <option value="3">Exercise 3</option>
+                        <option value="4">Exercise 4</option>
+                    </select>
+                    <br>
+                    <select class="form-select" name="datatype">
+                        <option selected>Open this select datatype</option>
+                        <option value="1">Video</option>
+                        <option value="2">Gyroscope</option>
+                        <option value="3">Acceleration</option>
+                    </select>
+                    <br>
+                    <select class="form-select" name="get_data">
+                        <option selected>Open this select</option>
+                        <option value="1">Raw video</option>
+                        <option value="2">Video exercise</option>
+                        <option value="3">Frame</option>
+                        <option value="3">Annotation</option>
+                    </select>
+                    <br>
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-sm-9 mt-3">
+            <div style="text-align: center">
+                <h1 class="text-uppercase mt-4">    {% block nametable %}
+                    dataset rehabhand
+                {% endblock %}
+                </h1>
+            </div>
+
+            <table class="table table-striped ">
+                <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Raw video</th>
+                    <th scope="col">Exercises video</th>
+                    <th scope="col">Segment video</th>
+                    <th scope="col">Frames</th>
+                    <th scope="col">Annotation</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for x in Pat %}
+                    <tr>
+                        <th scope="row"><a href="/Frames/{{ x.id }}">  {{ x.id }}</a></th>
+                        <td> <a href="#"> Download</a>{{ x.name }}</td>
+                        <td>{{ x.age }}</td>
+                        <td>{{ x.sex }}</td>
+                        <td>{{ x.address }}</td>
+                        <td>{{ x.address }}</td>
+
+
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+{% endblock %}
